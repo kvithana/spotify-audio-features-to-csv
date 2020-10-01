@@ -4,7 +4,7 @@ Some helpful scripts to get audio analysis data from Spotify from given playlist
 
 ### About
 
-Given a list of playlist URIs or URLs in a `.txt` file, this program will get the tracks associated with that playlist (currently up to 100), and call the [Spotify Audio Features](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/) get get insightful information about the tracks.
+Given a list of playlist URIs or URLs in a `.txt` file, this program will get the tracks associated with that playlist (currently up to 100), and call the [Spotify Audio Features](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/) endpoint to get insightful information about the tracks.
 
 This data will be outputted in csv format into the following structure:
 ```
