@@ -38,6 +38,18 @@ export const tracksHeaders = [
 ]
 
 /**
+ * CSV headers for artists
+ */
+export const artistHeaders = [
+    { id: 'name', title: 'name' },
+    { id: 'followers', title: 'followers' },
+    { id: 'popularity', title: 'popularity' },
+    { id: 'uri', title: 'uri' },
+    { id: 'href', title: 'link' },
+    { id: 'genres', title: 'genres' },
+]
+
+/**
  * CSV headers for playlists
  */
 export const playlistsHeaders = [

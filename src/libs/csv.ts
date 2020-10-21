@@ -1,5 +1,5 @@
 import { createObjectCsvWriter } from 'csv-writer'
-import { audioFeaturesHeaders, tracksHeaders, playlistsHeaders } from '../consts/csv-headers'
+import { audioFeaturesHeaders, tracksHeaders, playlistsHeaders, artistHeaders } from '../consts/csv-headers'
 import { ObjectCsvWriterParams } from 'csv-writer/src/lib/csv-writer-factory'
 
 /**
@@ -50,6 +50,32 @@ export const writePlaylistTracksToCsv = (
                 playlist_uri: playlist,
             })),
         )
+        .flat()
+
+    return writer.writeRecords(formattedData)
+}
+
+/**
+ * Write artist data from the artists endpoint to a csv.
+ * @param data Spotify artists data
+ * @param options CSV writer options
+ */
+export const writeArtistsToCsv = (
+    data: SpotifyApi.ArtistObjectFull[],
+    playlist: string,
+    options: ObjectCsvWriterParams,
+): Promise<void> => {
+    const writer = createObjectCsvWriter({
+        ...options,
+        header: artistHeaders,
+    })
+
+    const formattedData = data
+        .map((artist) => ({
+            ...artist,
+            genres: artist.genres.join(','),
+            followers: artist.followers.total,
+        }))
         .flat()
 
     return writer.writeRecords(formattedData)
